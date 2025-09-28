@@ -12,34 +12,30 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
 </head>
-<body>
-    <header class="site-header">
-        <div class="wrapper">
-            <h1 class="site-title">
-                <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
-            </h1>
-            <nav class="site-nav">
-                <ul>
-                    {% for link in site.nav_links %}
-                    <li>
-                        <a href="{{ link.url | relative_url }}" 
-                           {% if page.url == link.url %}class="active"{% endif %}>
-                            {{ link.title }}
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </nav>
-        </div>
-    </header>
+<body class="bg-gray-50">
+    <!-- Include Sidebar -->
+    {% include sidebar.html %}
+    
+    <!-- Main Content Area -->
+    <div id="main-content" class="main-content">
+        <!-- Mobile Header with Hamburger -->
+        <header class="bg-white shadow-sm border-b border-gray-200 md:hidden">
+            <div class="px-4 py-3 flex items-center justify-between">
+                <h1 class="text-lg font-semibold text-gray-900">{{ site.title }}</h1>
+                <button id="hamburger-btn" class="hamburger">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </button>
+            </div>
+        </header>
 
-    <main class="page-content">
-        <div class="wrapper">
+        <main class="p-6">
             {% if page.title %}
-            <header class="page-header">
-                <h1 class="page-title">{{ page.title }}</h1>
+            <header class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">{{ page.title }}</h1>
                 {% if page.subtitle %}
-                <p class="page-subtitle">{{ page.subtitle }}</p>
+                <p class="text-lg text-gray-600">{{ page.subtitle }}</p>
                 {% endif %}
             </header>
             {% endif %}
@@ -48,36 +44,38 @@
             {% include breadcrumb.html %}
             {% endunless %}
             
-            <div class="content">
+            <div class="prose prose-slate max-w-none">
                 {{ content }}
             </div>
-        </div>
-    </main>
-
-    <footer class="site-footer">
-        <div class="wrapper">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>{{ site.title }}</h3>
-                    <p>{{ site.description }}</p>
+        </main>
+        <footer class="mt-16 bg-gray-800 text-white">
+            <div class="max-w-6xl mx-auto px-6 py-12">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">{{ site.title }}</h3>
+                        <p class="text-gray-300">{{ site.description }}</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            {% for link in site.nav_links %}
+                            <li><a href="{{ link.url | relative_url }}" class="text-gray-300 hover:text-white transition-colors">{{ link.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                        <p class="text-gray-300">For contributions or questions about this handbook, please contact the family administrators.</p>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        {% for link in site.nav_links %}
-                        <li><a href="{{ link.url | relative_url }}">{{ link.title }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>For contributions or questions about this handbook, please contact the family administrators.</p>
+                <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                    <p class="text-gray-400">&copy; {{ 'now' | date: '%Y' }} {{ site.title }}. Maintained with ❤️ by the Yeoh family.</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; {{ 'now' | date: '%Y' }} {{ site.title }}. Maintained with ❤️ by the Yeoh family.</p>
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="{{ '/assets/js/sidebar.js' | relative_url }}"></script>
 </body>
 </html>
