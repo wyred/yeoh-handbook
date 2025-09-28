@@ -1,0 +1,23 @@
+{
+  "name": "yeoh-handbook",
+  "version": "1.0.0",
+  "description": "A comprehensive documentation website for the Yeoh family",
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --watch",
+    "build": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css",
+    "ui:add": "npx shadcn@latest add"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "@tailwindcss/forms": "^0.5.6",
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.16",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.293.0",
+    "tailwind-merge": "^2.0.0"
+  }
+}
