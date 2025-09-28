@@ -44,6 +44,10 @@
             </header>
             {% endif %}
             
+            {% unless page.url == '/' %}
+            {% include breadcrumb.html %}
+            {% endunless %}
+            
             <div class="content">
                 {{ content }}
             </div>

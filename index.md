@@ -5,7 +5,7 @@ title: Welcome to the Yeoh Family Handbook
 
 # Welcome to the Yeoh Family Handbook
 
-![Family Tree](assets/images/family-tree-banner.jpg)
+![Family Tree](assets/images/family-tree-banner.svg)
 
 This comprehensive handbook serves as a central repository for all things related to the Yeoh family. Here you'll find our rich history, cherished traditions, favorite recipes, and precious memories captured in photographs.
 

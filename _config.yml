@@ -26,6 +26,8 @@ nav_links:
     url: /recipes/
   - title: Photos
     url: /photos/
+  - title: About
+    url: /about/
 
 # Collections
 collections:
