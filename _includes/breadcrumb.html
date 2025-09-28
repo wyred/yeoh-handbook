@@ -1,16 +1,20 @@
-<nav class="mb-6 text-sm">
-    <div class="bg-white rounded-lg border border-gray-200 px-4 py-2">
-        <a href="{{ '/' | relative_url }}" class="text-blue-600 hover:text-blue-800">Home</a>
+<nav class="mb-6 text-sm" aria-label="Breadcrumb">
+    <div class="flex items-center space-x-1 rounded-lg border border-border bg-card px-3 py-2">
+        <a href="{{ '/' | relative_url }}" class="text-primary transition-colors hover:text-primary/80">Home</a>
         {% if page.url != '/' %}
             {% assign crumbs = page.url | remove:'/index.html' | split: '/' %}
             {% for crumb in crumbs %}
                 {% unless forloop.first %}
                     {% if forloop.last %}
-                        <span class="mx-2 text-gray-500">/</span>
-                        <span class="text-gray-700 font-medium">{{ page.title | default: crumb | replace:'-',' ' | capitalize }}</span>
+                        <svg class="mx-1 h-4 w-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18 6-6-6-6"></path>
+                        </svg>
+                        <span class="font-medium text-foreground">{{ page.title | default: crumb | replace:'-',' ' | capitalize }}</span>
                     {% else %}
-                        <span class="mx-2 text-gray-500">/</span>
-                        <a href="{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}" class="text-blue-600 hover:text-blue-800">{{ crumb | replace:'-',' ' | capitalize }}</a>
+                        <svg class="mx-1 h-4 w-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18 6-6-6-6"></path>
+                        </svg>
+                        <a href="{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}" class="text-primary transition-colors hover:text-primary/80">{{ crumb | replace:'-',' ' | capitalize }}</a>
                     {% endif %}
                 {% endunless %}
             {% endfor %}

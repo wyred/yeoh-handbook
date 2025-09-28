@@ -12,30 +12,29 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
 </head>
-<body class="bg-gray-50">
-    <!-- Include Sidebar -->
+<body>
+    <!-- Include shadcn/ui Sidebar -->
     {% include sidebar.html %}
     
-    <!-- Main Content Area -->
-    <div id="main-content" class="main-content">
-        <!-- Mobile Header with Hamburger -->
-        <header class="bg-white shadow-sm border-b border-gray-200 md:hidden">
-            <div class="px-4 py-3 flex items-center justify-between">
-                <h1 class="text-lg font-semibold text-gray-900">{{ site.title }}</h1>
-                <button id="hamburger-btn" class="hamburger">
-                    <div class="hamburger-line"></div>
-                    <div class="hamburger-line"></div>
-                    <div class="hamburger-line"></div>
-                </button>
-            </div>
+    <!-- Main Content Area with proper shadcn/ui spacing -->
+    <div class="pl-0 md:pl-64">
+        <!-- Mobile Header with shadcn/ui Sheet trigger -->
+        <header class="flex h-16 items-center justify-between border-b bg-background px-4 md:hidden">
+            <h1 class="text-lg font-semibold">{{ site.title }}</h1>
+            <button data-shadcn="sheet-trigger" data-target="mobile-sidebar" data-shadcn="button" data-variant="ghost" data-size="sm">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+                <span class="sr-only">Toggle navigation</span>
+            </button>
         </header>
 
-        <main class="p-6">
+        <main class="container mx-auto px-4 py-6 md:px-6">
             {% if page.title %}
             <header class="mb-8">
-                <h1 class="text-3xl font-bold text-gray-900 mb-2">{{ page.title }}</h1>
+                <h1 class="text-3xl font-bold tracking-tight text-foreground">{{ page.title }}</h1>
                 {% if page.subtitle %}
-                <p class="text-lg text-gray-600">{{ page.subtitle }}</p>
+                <p class="mt-2 text-lg text-muted-foreground">{{ page.subtitle }}</p>
                 {% endif %}
             </header>
             {% endif %}
@@ -44,38 +43,40 @@
             {% include breadcrumb.html %}
             {% endunless %}
             
-            <div class="prose prose-slate max-w-none">
+            <div class="prose prose-slate max-w-none dark:prose-invert">
                 {{ content }}
             </div>
         </main>
-        <footer class="mt-16 bg-gray-800 text-white">
-            <div class="max-w-6xl mx-auto px-6 py-12">
-                <div class="grid md:grid-cols-3 gap-8">
+
+        <footer class="mt-16 border-t bg-muted/50">
+            <div class="container mx-auto px-4 py-12 md:px-6">
+                <div class="grid gap-8 md:grid-cols-3">
                     <div>
-                        <h3 class="text-lg font-semibold mb-4">{{ site.title }}</h3>
-                        <p class="text-gray-300">{{ site.description }}</p>
+                        <h3 class="mb-4 text-lg font-semibold">{{ site.title }}</h3>
+                        <p class="text-muted-foreground">{{ site.description }}</p>
                     </div>
                     <div>
-                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                        <h3 class="mb-4 text-lg font-semibold">Quick Links</h3>
                         <ul class="space-y-2">
                             {% for link in site.nav_links %}
-                            <li><a href="{{ link.url | relative_url }}" class="text-gray-300 hover:text-white transition-colors">{{ link.title }}</a></li>
+                            <li><a href="{{ link.url | relative_url }}" class="text-muted-foreground transition-colors hover:text-foreground">{{ link.title }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
                     <div>
-                        <h3 class="text-lg font-semibold mb-4">Contact</h3>
-                        <p class="text-gray-300">For contributions or questions about this handbook, please contact the family administrators.</p>
+                        <h3 class="mb-4 text-lg font-semibold">Contact</h3>
+                        <p class="text-muted-foreground">For contributions or questions about this handbook, please contact the family administrators.</p>
                     </div>
                 </div>
-                <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-                    <p class="text-gray-400">&copy; {{ 'now' | date: '%Y' }} {{ site.title }}. Maintained with ❤️ by the Yeoh family.</p>
+                <div class="mt-8 border-t pt-8 text-center">
+                    <p class="text-sm text-muted-foreground">&copy; {{ 'now' | date: '%Y' }} {{ site.title }}. Maintained with ❤️ by the Yeoh family.</p>
                 </div>
             </div>
         </footer>
     </div>
     
-    <!-- JavaScript -->
-    <script src="{{ '/assets/js/sidebar.js' | relative_url }}"></script>
+    <!-- shadcn/ui Components JavaScript -->
+    <script src="{{ '/assets/js/components/button.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/components/sheet.js' | relative_url }}"></script>
 </body>
 </html>
