@@ -1,0 +1,45 @@
+# Site settings
+title: Yeoh Family Handbook
+description: A comprehensive guide and documentation for the Yeoh family
+baseurl: "/yeoh-handbook" # the subpath of your site
+url: "https://wyred.github.io" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Navigation
+nav_links:
+  - title: Home
+    url: /
+  - title: Family History
+    url: /family-history/
+  - title: Traditions
+    url: /traditions/
+  - title: Recipes
+    url: /recipes/
+  - title: Photos
+    url: /photos/
+  - title: About
+    url: /about/
+
+# Collections
+collections:
+  family:
+    output: true
+    permalink: /:collection/:name/
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/
+  - .sass-cache/
+  - .jekyll-cache/
