@@ -20,10 +20,31 @@ nav_links:
     url: /
   - title: Family History
     url: /family-history/
+    children:
+      - title: Timeline
+        url: /family-history/timeline/
+      - title: Family Tree
+        url: /family-history/tree/
+      - title: Notable Members
+        url: /family-history/members/
   - title: Traditions
     url: /traditions/
+    children:
+      - title: Celebrations
+        url: /traditions/celebrations/
+      - title: Customs
+        url: /traditions/customs/
   - title: Recipes
     url: /recipes/
+    children:
+      - title: Main Dishes
+        url: /recipes/main-dishes/
+      - title: Desserts
+        url: /recipes/desserts/
+      - title: Soups
+        url: /recipes/soups/
+      - title: Tea & Beverages
+        url: /recipes/beverages/
   - title: Photos
     url: /photos/
   - title: About
